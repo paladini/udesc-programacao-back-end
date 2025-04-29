@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block title %}{{ nome }} | Sistema Acadêmico{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row mb-4">
+        <div class="col">
+            <h1 class="display-5 fw-bold border-bottom pb-2 mb-4">{{ nome }}</h1>
+            <p class="lead">Conheça o corpo docente da nossa instituição.</p>
+        </div>
+        <div class="col-auto">
+            <a href="#" class="btn btn-primary">
+                <i class="bi bi-search me-2"></i> Pesquisar Professor
+            </a>
+        </div>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mb-5">
+        <!-- Professor Card -->
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="text-center mb-3">
+                        <div class="bg-light rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                            <i class="bi bi-person-fill fs-1"></i>
+                        </div>
+                    </div>
+                    <h5 class="card-title text-center">Dr. Carlos Silva</h5>
+                    <p class="card-text text-muted text-center mb-3">Doutor em Ciência da Computação</p>
+                    <div class="d-flex justify-content-around mb-3">
+                        <span class="badge bg-primary">Algoritmos</span>
+                        <span class="badge bg-info">Inteligência Artificial</span>
+                    </div>
+                    <p class="card-text">Especialista em algoritmos e estruturas de dados, com mais de 10 anos de experiência em ensino superior.</p>
+                </div>
+                <div class="card-footer bg-transparent border-top-0">
+                    <div class="d-grid">
+                        <a href="#" class="btn btn-outline-primary btn-sm">Ver perfil completo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Professor Card -->
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="text-center mb-3">
+                        <div class="bg-light rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                            <i class="bi bi-person-fill fs-1"></i>
+                        </div>
+                    </div>
+                    <h5 class="card-title text-center">Dra. Ana Oliveira</h5>
+                    <p class="card-text text-muted text-center mb-3">Doutora em Matemática Aplicada</p>
+                    <div class="d-flex justify-content-around mb-3">
+                        <span class="badge bg-success">Cálculo</span>
+                        <span class="badge bg-warning">Estatística</span>
+                    </div>
+                    <p class="card-text">Pesquisadora com ênfase em modelagem matemática e aplicações estatísticas em ciência de dados.</p>
+                </div>
+                <div class="card-footer bg-transparent border-top-0">
+                    <div class="d-grid">
+                        <a href="#" class="btn btn-outline-primary btn-sm">Ver perfil completo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Professor Card -->
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="text-center mb-3">
+                        <div class="bg-light rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                            <i class="bi bi-person-fill fs-1"></i>
+                        </div>
+                    </div>
+                    <h5 class="card-title text-center">Prof. Marcos Santos</h5>
+                    <p class="card-text text-muted text-center mb-3">Mestre em Engenharia de Software</p>
+                    <div class="d-flex justify-content-around mb-3">
+                        <span class="badge bg-danger">Web Development</span>
+                        <span class="badge bg-secondary">DevOps</span>
+                    </div>
+                    <p class="card-text">Profissional com vasta experiência em desenvolvimento web e implantação de sistemas em nuvem.</p>
+                </div>
+                <div class="card-footer bg-transparent border-top-0">
+                    <div class="d-grid">
+                        <a href="#" class="btn btn-outline-primary btn-sm">Ver perfil completo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
