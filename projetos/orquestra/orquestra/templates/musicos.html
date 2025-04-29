@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Orquestra Sinfônica - Músicos{% endblock %}
+
+{% block content %}
+    <h2 style="font-size: 40px;">
+        Músicos da Orquestra Sinfônica {{ nome }}
+    </h2>
+
+    {% for naipe in naipes%}
+    <div class="naipe">
+        <h2>{{ naipe.naipe }}</h2>
+        <div class="musicos">
+        {% for musico in naipe.musicos %}
+          <div class="musico">
+            <img src="{% static musico.foto %}" alt="Foto do músico {{ musico.nome }}">
+            <div class="nome">{{ musico.nome }}</div>
+            <div class="instrumento">{{ musico.instrumento}}</div>
+          </div>
+        {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+    
+{% endblock %}

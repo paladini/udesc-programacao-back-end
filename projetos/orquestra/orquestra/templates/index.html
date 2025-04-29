@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Orquestra Sinfônica{% endblock %}
+
+{% block content %}
+    <h2 style="font-size: 40px;">
+        Orquestra Sinfônica {{ nome }}
+    </h2>
+    <img src="{% static 'img/orquestra.jpg' %}" alt="Foto da Orquestra">
+{% endblock %}
