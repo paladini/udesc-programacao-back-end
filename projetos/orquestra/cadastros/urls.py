@@ -27,4 +27,5 @@ urlpatterns = [
     path('', views.index, name = 'galeria'),
     path('', views.index, name = 'agenda'),
     path('', views.index, name = 'contato'),
+    path('cadastrar_diretoria/', views.cadastrar_diretoria, name="cadastrar_diretoria")
 ]

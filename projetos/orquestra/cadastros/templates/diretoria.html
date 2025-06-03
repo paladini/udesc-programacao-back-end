@@ -15,9 +15,9 @@
         
         {% for componente in componentes %}
         <tr>
-            <td>{{ componente.cargo }}</td>
+            <td>{{ componente.get_cargo_display }}</td>
             <td>{{ componente.nome }}</td>
-            <td>{{ componente.contato }}</td>
+            <td>{{ componente.contato|default_if_none:"-"}}</td>
         </tr>       
         {% endfor %}
 
