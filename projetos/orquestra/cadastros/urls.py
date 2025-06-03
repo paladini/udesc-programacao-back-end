@@ -27,5 +27,9 @@ urlpatterns = [
     path('', views.index, name = 'galeria'),
     path('', views.index, name = 'agenda'),
     path('', views.index, name = 'contato'),
-    path('cadastrar_diretoria/', views.cadastrar_diretoria, name="cadastrar_diretoria")
+    path('cadastrar_diretoria/', views.cadastrar_diretoria, name="cadastrar_diretoria"),
+    path('cadastros/musicos/', views.listar_musicos, name='listar_musicos'),
+    path('cadastros/musicos/adicionar/', views.cadastrar_musico, name='adicionar_musico'),
+    path('cadastros/musicos/alterar/<int:id>/', views.alterar_musico, name='alterar_musico'),
+    path('cadastros/musicos/excluir/<int:id>/', views.excluir_musico, name='excluir_musico'),
 ]

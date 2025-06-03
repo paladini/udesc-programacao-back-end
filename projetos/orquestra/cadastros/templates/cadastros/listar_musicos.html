@@ -1,0 +1,40 @@
+{% extends 'base_cad.html' %}
+
+{% block title %}Músicos Cadastrados{% endblock %}
+
+{% block content %}
+    
+    <h1>Lista de Músicos</h1>
+
+    <button><a href="{% url 'adicionar_musico' %}">Adicionar Músico</a></button>
+
+    <table class="tabela">
+        <tr>
+            <th>Nome</th>
+            <th>Naipe</th>
+            <th>Instrumento</th>
+            <th>Alterar</th>
+            <th>Excluir</th>
+        </tr>
+
+        {% for musico in musicos %}
+            <tr>
+                <td>{{ musico.nome }}</td>
+                <td>{{ musico.naipe.nome }}</td>
+                <td>{{ musico.instrumento.nome }}</td>
+                <td>
+                    <button>
+                        <a href="{% url 'alterar_musico' musico.codigo %}">Alterar</a>
+                    </button>
+                </td>
+                <td>
+                    <button>
+                        <a href="{% url 'excluir_musico' musico.codigo %}">Excluir</a>
+                    </button>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}
+

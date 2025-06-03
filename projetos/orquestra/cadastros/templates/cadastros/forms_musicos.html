@@ -1,0 +1,18 @@
+{% extends 'base_cad.html' %}
+
+{% block title %}Cadastro de Músicos{% endblock %}
+
+{% block content %}
+    
+    <h2>{{form.instance.codigo|yesno:"Editar Músico, Adicionar Músico"}}</h2>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit">Salvar</button>
+        <button><a href="{% url 'listar_musicos' %}">Voltar</a></button>
+    </form>
+
+{% endblock %}
+

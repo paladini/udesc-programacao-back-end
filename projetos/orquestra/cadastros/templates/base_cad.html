@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Site da Orquestra{% endblock %} </title>
+    <link rel="stylesheet" href="{% static 'css/estilo.css' %}">
+</head>
+<body>
+    <header class="header">
+        <img src="{% static 'img/logo.png' %}" alt="Orquestra Logo" class="logo">
+        <p>Olá, Usuário</p>
+        <div class="dropdown">
+            <button><a href="{% url 'listar_musicos' %}">Home</a></button>
+        </div>
+        <div class="dropdown">
+            <button><a href="{% url 'listar_musicos' %}">Músicos</a></button>
+        </div>
+    </header>
+    <section class="main-content">
+        {% block content %}
+
+        {% endblock %}
+    </section>
+    <footer class="footer">
+        <p>&copy; 2025 Orquestra. Todos os direitos reservados.</p>
+        <p>Contato: contato@orquestra.br | Telefone: (00) 1234-5678 | @orquestra</p>
+    </footer>
+</body>
+</html>

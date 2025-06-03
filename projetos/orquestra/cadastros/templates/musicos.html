@@ -10,13 +10,13 @@
 
     {% for naipe in naipes%}
     <div class="naipe">
-        <h2>{{ naipe.naipe }}</h2>
+        <h2>{{ naipe.nome }}</h2>
         <div class="musicos">
-        {% for musico in naipe.musicos %}
+        {% for musico in naipe.musico_set.all %}
           <div class="musico">
             <img src="{% static musico.foto %}" alt="Foto do músico {{ musico.nome }}">
             <div class="nome">{{ musico.nome }}</div>
-            <div class="instrumento">{{ musico.instrumento}}</div>
+            <div class="instrumento">{{ musico.instrumento}} - {{ musico.get_voz_display }}</div>
           </div>
         {% endfor %}
         </div>
