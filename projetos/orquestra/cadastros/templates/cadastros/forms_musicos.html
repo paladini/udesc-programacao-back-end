@@ -11,7 +11,7 @@
         {{ form.as_p }}
 
         <button type="submit">Salvar</button>
-        <button><a href="{% url 'listar_musicos' %}">Voltar</a></button>
+        <a href="{% url 'listar_musicos' %}" class="link-como-botao">Voltar</a>
     </form>
 
 {% endblock %}

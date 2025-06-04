@@ -28,6 +28,7 @@ urlpatterns = [
     path('', views.index, name = 'agenda'),
     path('', views.index, name = 'contato'),
     path('cadastrar_diretoria/', views.cadastrar_diretoria, name="cadastrar_diretoria"),
+    path('cadastros/', views.home, name='home'),
     path('cadastros/musicos/', views.listar_musicos, name='listar_musicos'),
     path('cadastros/musicos/adicionar/', views.cadastrar_musico, name='adicionar_musico'),
     path('cadastros/musicos/alterar/<int:id>/', views.alterar_musico, name='alterar_musico'),

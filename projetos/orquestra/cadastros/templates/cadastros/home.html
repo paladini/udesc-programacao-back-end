@@ -1,0 +1,15 @@
+{% extends 'base_cad.html' %}
+
+{% block title %}Cadastros do Site{% endblock %}
+
+{% block content %}
+    
+    <h1>Bem vindo aos cadastros do site!</h1>
+
+    {% if user.is_authenticated %}
+        <p>Bem vindo, {{ user.name }}</p>
+    {% else %}
+        <p>Nenhum usuário logado</p>
+    {% endif %}
+
+{% endblock %}

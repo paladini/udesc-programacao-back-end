@@ -3,6 +3,8 @@ from django.db.models import Prefetch
 from .models import Diretoria, Naipe, Musico
 from .forms import DiretoriaForm, MusicoForm
 
+from django.contrib.auth.decorators import login_required
+
 def index (request):
     return render(request, 'index.html', {'nome' : 'Fazendo Música'})
 
@@ -36,10 +38,12 @@ def cadastrar_diretoria(request):
 
     return render(request, 'cadastrar_diretoria.html', {'form': form })
 
+@login_required
 def listar_musicos(request):
     musicos = Musico.objects.all()
     return render(request, 'cadastros/listar_musicos.html', {'musicos': musicos})
 
+@login_required
 def cadastrar_musico(request):
     if request.method == 'POST':
         form = MusicoForm(request.POST, request.FILES)
@@ -50,6 +54,7 @@ def cadastrar_musico(request):
         form = MusicoForm()
     return render(request, 'cadastros/forms_musicos.html', {'form': form})
 
+@login_required
 def alterar_musico(request, id):
     musico = get_object_or_404(Musico, codigo = id)
     if request.method == 'POST':
@@ -61,7 +66,11 @@ def alterar_musico(request, id):
         form = MusicoForm(instance=musico)
     return render(request, 'cadastros/forms_musicos.html', {'form': form})
 
+@login_required
 def excluir_musico(request, id):
     musico = get_object_or_404(Musico, codigo = id)
     musico.delete()
     return redirect('listar_musicos')
+
+def home(request):
+    return render(request, 'cadastros/home.html')
