@@ -18,6 +18,9 @@
             <div class="dropdown">
                 <button><a href="{% url 'listar_musicos' %}">Músicos</a></button>
             </div>
+            <div class="dropdown">
+                <button><a href="{% url 'listar_musicos' %}">Cadastrar Usuário</a></button>
+            </div>
             <form method="post" action="{% url 'logout' %}">
                 {% csrf_token %}
                 <button type="submit">Sair</button>  
@@ -29,6 +32,13 @@
         {% endif %}
     </header>
     <section class="main-content">
+
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+
         {% block content %}
 
         {% endblock %}

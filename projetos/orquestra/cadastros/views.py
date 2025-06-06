@@ -1,9 +1,11 @@
 from django.shortcuts import redirect, render, get_object_or_404
 from django.db.models import Prefetch
 from .models import Diretoria, Naipe, Musico
-from .forms import DiretoriaForm, MusicoForm
+from .forms import DiretoriaForm, MusicoForm, UsuarioForm
 
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth.models import Group
+from django.contrib import messages
 
 def index (request):
     return render(request, 'index.html', {'nome' : 'Fazendo Música'})
@@ -38,12 +40,12 @@ def cadastrar_diretoria(request):
 
     return render(request, 'cadastrar_diretoria.html', {'form': form })
 
-@login_required
+# @permission_required('cadastro.view_musico', raise_exception=True)
 def listar_musicos(request):
     musicos = Musico.objects.all()
     return render(request, 'cadastros/listar_musicos.html', {'musicos': musicos})
 
-@login_required
+@permission_required('cadastro.add_musico', raise_exception=True)
 def cadastrar_musico(request):
     if request.method == 'POST':
         form = MusicoForm(request.POST, request.FILES)
@@ -54,7 +56,7 @@ def cadastrar_musico(request):
         form = MusicoForm()
     return render(request, 'cadastros/forms_musicos.html', {'form': form})
 
-@login_required
+@permission_required('cadastro.change_musico', raise_exception=True)
 def alterar_musico(request, id):
     musico = get_object_or_404(Musico, codigo = id)
     if request.method == 'POST':
@@ -66,11 +68,29 @@ def alterar_musico(request, id):
         form = MusicoForm(instance=musico)
     return render(request, 'cadastros/forms_musicos.html', {'form': form})
 
+# @permission_required('cadastros.delete', raise_exception=True)
 @login_required
 def excluir_musico(request, id):
-    musico = get_object_or_404(Musico, codigo = id)
-    musico.delete()
-    return redirect('listar_musicos')
+
+    if not request.user.has_perm('cadastros.delete_musico'):
+        messages.error(request, 'Você não tem acesso à exclusão de músicos!')
+        return redirect('listar_musicos')
+    else:
+        musico = get_object_or_404(Musico, codigo = id)
+        musico.delete()
+        return redirect('listar_musicos')
 
 def home(request):
     return render(request, 'cadastros/home.html')
+
+def cadastrar_usuario(request):
+    if request.method == 'POST':
+        form = UsuarioForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            grupo = Group.objects.get(name = 'Cadastros')
+            user.groups.add(grupo)
+            return redirect('home')
+    else:
+        form = UsuarioForm()
+    return render(request, 'cadastros/forms_usuario.html', {'form': form})

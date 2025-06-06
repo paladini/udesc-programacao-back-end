@@ -33,4 +33,5 @@ urlpatterns = [
     path('cadastros/musicos/adicionar/', views.cadastrar_musico, name='adicionar_musico'),
     path('cadastros/musicos/alterar/<int:id>/', views.alterar_musico, name='alterar_musico'),
     path('cadastros/musicos/excluir/<int:id>/', views.excluir_musico, name='excluir_musico'),
+    path('cadastros/usuarios/', views.cadastrar_usuario, name='cadastrar_usuario'),
 ]

@@ -25,9 +25,11 @@
                 <td>
                     <a href="{% url 'alterar_musico' musico.codigo %}" class="link-como-botao">Alterar</a>
                 </td>
+                {% if perms.cadastros.delete_musico %}
                 <td>
                     <a href="{% url 'excluir_musico' musico.codigo %}" class="link-como-botao">Excluir</a>
                 </td>
+                {% endif %}
             </tr>
         {% endfor %}
     </table>
